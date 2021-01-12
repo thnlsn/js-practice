@@ -463,3 +463,15 @@ higherBMI(mark.name, mark.calcBMI(), john.name, john.calcBMI()); */
     console.log(`Exercise rep ${rep}`);
   }
 } */
+
+let dice = Math.trunc(Math.random() * 6) + 1; // Number from 1 - 6
+let maxRoll = 6;
+
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1; // Set the dice to something else
+  // If it was set to 6, this if condition will finally pass and log that you got a 6, after which this while loop won't run any longer.
+  if (dice === 6) {
+    console.log(`You finally rolled a 6! Loop will now end.`);
+  }
+}
