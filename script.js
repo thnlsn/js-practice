@@ -342,7 +342,124 @@ console.log(calcAverage(scores.koalas2));
 
 checkWinner(calcAverage(scores.dolpins2), calcAverage(scores.koalas2)); */
 
-const friends = ['Ethan', 'Marilyn', 'Maria'];
+/* const friends = ['Ethan', 'Marilyn', 'Maria'];
 const newFriends = ['Ethan', 'Marilyn', 'Maria'] + 'Andy';
 
-console.log(newFriends);
+console.log(newFriends); */
+
+/*
+
+const interestedIn = prompt(
+  'What do you want to know about Thomas? Type either firstName, lastName, or age.'
+);
+
+console.log(
+  thomas[interestedIn]
+    ? thomas[interestedIn]
+    : 'That was not one of the options! Type either firstName, lastName, or age.'
+); */
+
+// Thomas has 3 friends, and his best friend is called Ethan.
+
+/* const thomas = {
+  firstName: 'Thomas',
+  lastName: 'Nelson',
+  age: 23,
+  friends: ['Ethan', 'Marilyn', 'Fernando'],
+};
+
+console.log(
+  `${thomas.firstName} has ${thomas.friends.length} friends, and his best friend is ${thomas.friends[0]}.`
+); */
+
+/* const thomas = {
+  firstName: 'Thomas',
+  lastName: 'Nelson',
+  birthYear: 1997,
+  friends: ['Ethan', 'Marilyn', 'Fernando'],
+  // calcAge: (birthYear) => 2021 - birthYear,
+  calcAge: function () {
+    this.age = new Date().getFullYear() - this.birthYear;
+    return this.age;
+  },
+  hasDriverLiscense: true,
+  job: 'developer',
+
+  getSummary: function () {
+    return `${this.firstName} ${
+      this.lastName
+    } is a ${this.calcAge()} year old ${this.job} who ${
+      this.hasDriverLiscense
+        ? 'has a drivers liscense.'
+        : 'does not have a drivers liscense.'
+    }`;
+  },
+};
+
+console.log(thomas.getSummary()); */
+
+/* const mark = {
+  name: 'Mark Miller',
+  weight: 75,
+  height: 1.69,
+  calcBMI: function () {
+    this.bmi = this.weight / this.height ** 2;
+    return this.bmi;
+  },
+};
+
+const john = {
+  name: 'John Smith',
+  weight: 92,
+  height: 1.95,
+  calcBMI: function () {
+    this.bmi = this.weight / this.height ** 2;
+    return this.bmi;
+  },
+};
+
+const higherBMI = (person1, person1BMI, person2, person2BMI) => {
+  if (person1BMI < person2BMI) {
+    console.log(
+      `${person2}'s BMI (${person2BMI}) is higher than ${person1}'s (${person1BMI})`
+    );
+  } else if (person1BMI > person2BMI) {
+    console.log(
+      `${person1}'s BMI (${person1BMI}) is higher than ${person2}'s (${person2BMI})`
+    );
+  } else {
+    console.log(`${person1} and ${person2} have the same BMI (${person1BMI})`);
+  }
+};
+
+higherBMI(mark.name, mark.calcBMI(), john.name, john.calcBMI()); */
+
+/* const stuff = [
+  'Apple',
+  42,
+  'Her Majesty, The Queen',
+  [1, 2, 3],
+  420.69,
+  true,
+  'string',
+  undefined,
+  null,
+  '9999',
+]; */
+
+/* for (let thing = 0; thing < stuff.length; thing++) {
+  if (typeof stuff[thing] === 'object') break;
+
+  console.log(stuff[thing], typeof stuff[thing]);
+} */
+
+/* for (let i = stuff.length - 1; i >= 0; i--) {
+  console.log(i, stuff[i]);
+} */
+
+/* for (let exercise = 1; exercise < 4; exercise++) {
+  console.log(`Exercise Set ${exercise} ---------------`);
+  for (let rep = 1; rep < 6; rep++) {
+    console.log(`Exercise rep ${rep}`);
+  }
+} */
