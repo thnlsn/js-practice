@@ -292,3 +292,57 @@ const calcAge3 = (birthYear) => 2021 - birthYear;
 console.log(calcAge(1997));
 console.log(calcAge2(1997));
 console.log(calcAge3(1997)); */
+
+/* const func = function (string) {
+  return string;
+};
+
+console.log(func('hi'));
+console.log(func);
+console.log(typeof func); */
+
+// LECTURE: Dolphins vs Koalas 2!
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* const scores = {
+  dolpins: [44, 23, 71],
+  koalas: [85, 54, 41],
+  dolpins2: [85, 54, 71],
+  koalas2: [23, 34, 27],
+};
+
+const calcAverage = (numArr) => {
+  let total = 0;
+  for (let i = 0; i < numArr.length; i++) {
+    total = total + numArr[i];
+  }
+  return total / numArr.length;
+};
+
+const checkWinner = (dolphinsAvg, koalasAvg) => {
+  if (dolphinsAvg > koalasAvg) {
+    console.log('Dolphins scored more points.');
+    if (dolphinsAvg > koalasAvg * 2) {
+      console.log(`Dolphins win! (${dolphinsAvg} - ${koalasAvg})`);
+    } else {
+      console.log('There is no winner.');
+    }
+  } else {
+    console.log('Koalas scored more points.');
+    if (koalasAvg > dolphinsAvg * 2) {
+      console.log(`Koalas win! (${koalasAvg} - ${dolphinsAvg})`);
+    } else {
+      console.log('There is no winner.');
+    }
+  }
+};
+
+console.log(calcAverage(scores.dolpins2));
+console.log(calcAverage(scores.koalas2));
+
+checkWinner(calcAverage(scores.dolpins2), calcAverage(scores.koalas2)); */
+
+const friends = ['Ethan', 'Marilyn', 'Maria'];
+const newFriends = ['Ethan', 'Marilyn', 'Maria'] + 'Andy';
+
+console.log(newFriends);
