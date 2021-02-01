@@ -464,7 +464,7 @@ higherBMI(mark.name, mark.calcBMI(), john.name, john.calcBMI()); */
   }
 } */
 
-let dice = Math.trunc(Math.random() * 6) + 1; // Number from 1 - 6
+/* let dice = Math.trunc(Math.random() * 6) + 1; // Number from 1 - 6
 let maxRoll = 6;
 
 while (dice !== 6) {
@@ -474,4 +474,86 @@ while (dice !== 6) {
   if (dice === 6) {
     console.log(`You finally rolled a 6! Loop will now end.`);
   }
+} */
+
+/* const temperatures = [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5]; */
+/* 
+const calcAmplitude = (arr) => {
+  let max = 0;
+  let min = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] !== 'number') continue;
+
+    if (arr[i] > max) max = arr[i];
+    if (arr[i] < min) min = arr[i];
+  }
+  console.log(max, min);
+  return max - min;
+};
+
+console.log(calcAmplitude(temperatures)); */
+
+/* const temperatures1 = [17, 21, 23];
+const temperatures2 = [12, 5, -5, 0, 4];
+
+// We need to know the index+1 (the day from today) and the temp (value in index);
+// With that information, we have to construct a string that can be as long as it needs to be to display that info
+
+const displayForecast = (arr) => {
+  let msg = '...';
+  for (let i = 0; i < arr.length; i++) {
+    msg += ` ${arr[i]}°C in ${i + 1} days ...`;
+  }
+  return msg;
+};
+
+console.log(displayForecast(temperatures2)); */
+
+// We don't have access to this in node.js because this JavaScript Runtime does not have access to the Web API's like the browser's does
+// console.log(document.querySelector('.js-practice').textContent);
+
+/* function func(bar) {
+  const thing = 'potatoes';
+  console.log(this.thing);
+  console.log(typeof bar);
 }
+func('hi');
+ */
+
+/* const myName = 'Thomas';
+
+function first() {
+  const age = 24;
+
+  if (age) {
+    const foo = 'foo';
+    var bar = 'bar';
+  }
+
+  function second() {
+    const job = 'bum';
+
+    console.log(`${myName} is a ${age} year old ${job}
+    ${bar} -=-=- ${bar}`);
+  }
+
+  second();
+}
+
+first(); */
+
+// Top-level code so it is available as a global variable because it was created in the Global Execution Context
+function calcAge(birthYear) {
+  const age = 2021 - birthYear;
+
+  function printAge() {
+    const output = `You are ${firstName}, age ${age}, born in ${birthYear}`;
+    console.log(output);
+  }
+  printAge();
+
+  return age;
+}
+
+const firstName = 'Thomas';
+console.log(calcAge(1997));
