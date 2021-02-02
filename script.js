@@ -705,7 +705,61 @@ const restaurant = {
     // Return the item at the given index as the customer order
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
+
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
 };
+
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+
+// const { name, openingHours, categories } = restaurant;
+/* console.log(openingHours, name, categories); */
+
+/* const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags); */
+
+/* let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+
+let x = 'X';
+let y = 'Y';
+let z = 'Z';
+
+console.log(x, y, z);
+const xyz = { x, y, z };
+console.log(xyz);
+({ a: x, b: y, c: z, d: q = 3 } = { a: 1, b: 2, c: 3 });
+console.log(x, y, z, d); */
+
+/* console.log(a, b);
+({ a, b } = obj);
+console.log(a, b); */
+
+/* const {
+  mainMenu: main,
+  starterMenu: starters,
+  categories = [],
+  desserts = [],
+} = restaurant;
+console.log(main, starters, categories, desserts); */
 
 /* // Returns an array of two values
 restaurant.order(2, 0);
