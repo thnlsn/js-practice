@@ -543,7 +543,7 @@ function first() {
 first(); */
 
 // Top-level code so it is available as a global variable because it was created in the Global Execution Context
-function calcAge(birthYear) {
+/* function calcAge(birthYear) {
   const age = 2021 - birthYear;
 
   function printAge() {
@@ -556,4 +556,74 @@ function calcAge(birthYear) {
 }
 
 const firstName = 'Thomas';
-console.log(calcAge(1997));
+console.log(calcAge(1997)); */
+
+/* console.log(foo);
+var foo = 'foo'; */
+
+/* console.log(one1());
+function one1() {
+  return 'one1';
+} */
+
+/* console.log(two2());
+const two2 = function () {
+  return 'two2';
+}; */
+
+// console.log(me);
+// console.log(job);
+// console.log(age);
+
+/* console.log(addExpr(1, 1));
+
+var me = 'Thomas';
+let job = 'unemployed';
+const age = '24';
+
+function addDecl(a, b) {
+  return a + b;
+}
+
+const addExpr = function (a, b) {
+  return a + b;
+};
+
+const addArrow = () => a + b; */
+
+/* if (!numProducts) deleteShoppingCart();
+// All products will be deleted because of hoisting (numProducts is undefined in the creation phase)
+
+var numProducts = 10;
+
+function deleteShoppingCart() {
+  console.log('All products deleted!');
+} */
+
+/* console.log(!undefined === true ? true : false); */
+
+/* var x = 1;
+let y = 2;
+const z = 3;
+ */
+
+let firstName = 'Aiyuk';
+
+const thomas = {
+  firstName: 'Thomas',
+  year: 1997,
+  calcAge: function () {
+    // console.log(this);
+    console.log(2021 - this.year);
+
+    const isMillenial = () => {
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMillenial();
+  },
+
+  greet: () => console.log(`Hey ${this.firstName}`),
+};
+
+thomas.greet();
+thomas.calcAge();
