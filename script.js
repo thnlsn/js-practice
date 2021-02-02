@@ -650,7 +650,7 @@ console.log(`Friend: ${friend.age}`);
 console.log(`Me: ${me.age}`); */
 
 // PRIMITIVE TYPES
-let lastName = 'Aiyuk';
+/* let lastName = 'Aiyuk';
 let oldLastName = lastName;
 lastName = 'Kinlaw';
 console.log(lastName, oldLastName);
@@ -665,7 +665,7 @@ const brandon = {
 const marriedBrandon = brandon;
 marriedBrandon.lastName = 'Kinlaw';
 console.log(`Before marriage:`, brandon);
-console.log(`After marriage:`, marriedBrandon);
+console.log(`After marriage:`, marriedBrandon); */
 // RESULT:
 // Before marriage: {firstName: 'Brandon', lastName: 'Kinlaw', age: 22}
 // After marriage: {firstName: 'Brandon', lastName: 'Kinlaw', age: 22}
@@ -678,3 +678,65 @@ Primitive types:
 - Execution phase begins
 
 */
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Array Destructuring
+
+const restaurant = {
+  name: 'Bubba Gump',
+  location: 'Via Di Olivia St. Henderson, Nevada',
+  categories: ['Seafood', 'All-American', 'Pasta', 'Vegetarian'],
+  starterMenu: [
+    'Calamari',
+    'Clam Chowder',
+    'Mozzarella Sticks',
+    'Garlic Bread',
+  ],
+  mainMenu: [
+    'Bacon Cheeseburger',
+    "Bucket O' Shrimp",
+    'Fish & Chips',
+    'Chicken Skillet',
+  ],
+
+  // Pass in the index number of the item you want to order
+  order: function (starterIndex, mainIndex) {
+    // Return the item at the given index as the customer order
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+};
+
+/* // Returns an array of two values
+restaurant.order(2, 0);
+// Sets the two values returned from the array to their own variables
+let [starter, main] = restaurant.order(2, 0);
+// This is how to return variables from an array using destructuring
+console.log(starter, main);
+
+const nested = [2, 4, [5, 6]];
+// const [i, , [j, k]] = nested;
+
+const [a, , [b, c]] = nested;
+console.log(a, b, c); */
+
+/* const arr = [2, 3, 4];
+const a = arr[0];
+const b = arr[1];
+const c = arr[2];
+
+const [x, y, z] = arr; */
+
+// let [main, , secondary] = restaurant.categories;
+/* console.log(main, secondary);
+
+// How to switch 2 values before destructuring
+const temp = main; // Temporarily store the first main value
+main = secondary; // With main safely backed up, change it to secondary
+secondary = temp; // Main has been overwritted so both are secondary, but using the temporary store of main we set secondary to main, so they have successfully been flipped
+console.log(main, secondary); */
+
+// Switch two values with destructuring
+// console.log(main, secondary);
+// [main, secondary] = [secondary, main];
+// console.log(main, secondary);
