@@ -607,7 +607,7 @@ let y = 2;
 const z = 3;
  */
 
-let firstName = 'Aiyuk';
+/* let firstName = 'Aiyuk';
 
 const thomas = {
   firstName: 'Thomas',
@@ -626,4 +626,25 @@ const thomas = {
 };
 
 thomas.greet();
-thomas.calcAge();
+thomas.calcAge(); */
+
+/* document.querySelector('.js-practice').addEventListener('click', () => {
+  console.log(this);
+}); */
+
+/* let age = 24;
+let oldAge = age;
+age = 25;
+
+console.log(age);
+console.log(oldAge);
+
+const me = {
+  name: 'Thomas',
+  age: 24,
+};
+const friend = me;
+friend.age = 54;
+
+console.log(`Friend: ${friend.age}`);
+console.log(`Me: ${me.age}`); */
