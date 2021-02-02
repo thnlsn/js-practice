@@ -648,3 +648,33 @@ friend.age = 54;
 
 console.log(`Friend: ${friend.age}`);
 console.log(`Me: ${me.age}`); */
+
+// PRIMITIVE TYPES
+let lastName = 'Aiyuk';
+let oldLastName = lastName;
+lastName = 'Kinlaw';
+console.log(lastName, oldLastName);
+// RESULT: Kinlaw Aiyuk
+
+// REFERENCE TYPES
+const brandon = {
+  firstName: 'Brandon',
+  lastName: 'Aiyuk',
+  age: 22,
+};
+const marriedBrandon = brandon;
+marriedBrandon.lastName = 'Kinlaw';
+console.log(`Before marriage:`, brandon);
+console.log(`After marriage:`, marriedBrandon);
+// RESULT:
+// Before marriage: {firstName: 'Brandon', lastName: 'Kinlaw', age: 22}
+// After marriage: {firstName: 'Brandon', lastName: 'Kinlaw', age: 22}
+
+// What is happening here?
+/* 
+
+Primitive types:
+- Creation phase begins and lastName, oldLastName are set to uninitialized.
+- Execution phase begins
+
+*/
