@@ -990,10 +990,17 @@ const restaurant = {
   },
 };
 
-const ingredients = [
+/* const restaurantCopy = {
+  foundedIn: '2001',
+  ...restaurant,
+  founder: 'Forrest Gump',
+};
+console.log(restaurantCopy); */
+
+/* const ingredients = [
   prompt("Let's make pasta! Ingredient 1?"),
   prompt("Let's make pasta! Ingredient 2?"),
   prompt("Let's make pasta! Ingredient 3?"),
 ];
 
-restaurant.orderPasta(...ingredients);
+restaurant.orderPasta(...ingredients); */
