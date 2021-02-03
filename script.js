@@ -683,7 +683,7 @@ Primitive types:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Array Destructuring
 
-const restaurant = {
+/* const restaurant = {
   name: 'Bubba Gump',
   location: 'Via Di Olivia St. Henderson, Nevada',
   categories: ['Seafood', 'All-American', 'Pasta', 'Vegetarian'],
@@ -700,12 +700,6 @@ const restaurant = {
     'Chicken Skillet',
   ],
 
-  // Pass in the index number of the item you want to order
-  order: function (starterIndex, mainIndex) {
-    // Return the item at the given index as the customer order
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-
   openingHours: {
     thu: {
       open: 12,
@@ -720,12 +714,55 @@ const restaurant = {
       close: 24,
     },
   },
-};
 
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
+  // Pass in the index number of the item you want to order
+  order: function (starterIndex, mainIndex) {
+    // Return the item at the given index as the customer order
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 
-// const { name, openingHours, categories } = restaurant;
+  orderDelivery: function ({
+    time = '20:00',
+    address = 'Pickup Location',
+    mainIndex = 0,
+    starterIndex = 0,
+  }) {
+    console.log(
+      `You delivery of ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} will arrive at ${address} at ${time}`
+    );
+  },
+}; */
+
+/* restaurant.orderDelivery({
+  time: '23:30',
+  address: 'Via del Sole, 21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
+
+restaurant.orderDelivery({
+  mainIndex: 2,
+  starterIndex: 2,
+  extraOrder: 1,
+}); */
+
+/* const { name, openingHours, categories } = restaurant;
+
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c); */
+
+/* const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters); */
+
+/* let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+
+({ a, b } = obj);
+console.log(a, b); */
+
 /* console.log(openingHours, name, categories); */
 
 /* const {
