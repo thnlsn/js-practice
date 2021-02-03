@@ -683,56 +683,6 @@ Primitive types:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Array Destructuring
 
-/* const restaurant = {
-  name: 'Bubba Gump',
-  location: 'Via Di Olivia St. Henderson, Nevada',
-  categories: ['Seafood', 'All-American', 'Pasta', 'Vegetarian'],
-  starterMenu: [
-    'Calamari',
-    'Clam Chowder',
-    'Mozzarella Sticks',
-    'Garlic Bread',
-  ],
-  mainMenu: [
-    'Bacon Cheeseburger',
-    "Bucket O' Shrimp",
-    'Fish & Chips',
-    'Chicken Skillet',
-  ],
-
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0,
-      close: 24,
-    },
-  },
-
-  // Pass in the index number of the item you want to order
-  order: function (starterIndex, mainIndex) {
-    // Return the item at the given index as the customer order
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-
-  orderDelivery: function ({
-    time = '20:00',
-    address = 'Pickup Location',
-    mainIndex = 0,
-    starterIndex = 0,
-  }) {
-    console.log(
-      `You delivery of ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} will arrive at ${address} at ${time}`
-    );
-  },
-}; */
-
 /* restaurant.orderDelivery({
   time: '23:30',
   address: 'Via del Sole, 21',
@@ -831,3 +781,219 @@ console.log(main, secondary); */
 // console.log(main, secondary);
 // [main, secondary] = [secondary, main];
 // console.log(main, secondary);
+
+/* const restaurant = {
+  name: 'Bubba Gump',
+  location: 'Via Di Olivia St. Henderson, Nevada',
+  categories: ['Seafood', 'All-American', 'Pasta', 'Vegetarian'],
+  starterMenu: [
+    'Calamari',
+    'Clam Chowder',
+    'Mozzarella Sticks',
+    'Garlic Bread',
+  ],
+  mainMenu: [
+    'Bacon Cheeseburger',
+    "Bucket O' Shrimp",
+    'Fish & Chips',
+    'Chicken Skillet',
+  ],
+
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+
+  // Pass in the index number of the item you want to order
+  order: function (starterIndex, mainIndex) {
+    // Return the item at the given index as the customer order
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery: function ({
+    time = '20:00',
+    address = 'Pickup Location',
+    mainIndex = 0,
+    starterIndex = 0,
+  }) {
+    console.log(
+      `You delivery of ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} will arrive at ${address} at ${time}`
+    );
+  },
+}; */
+
+/* const arr = [7, 8, 9];
+// Adding two new values to the start of the arr
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const goodNewArr = [...arr, 10, 11];
+console.log(goodNewArr);
+
+const newMenu = [...restaurant.mainMenu, 'Chicken & Waffles'];
+console.log(newMenu); */
+
+// The spread operator does not assign new variables the way that destructuring does, so you can only use it in a spot where it is directly needed and only in a situation where you would otherwise have to write a bunch of values seperated by commas (this is the ONLY place to use the spread operator)
+
+// const mainMenuCopy = restaurant.mainMenu;
+// console.log(mainMenuCopy);
+// console.log(restaurant.mainMenu);
+
+/* const restaurant = {
+  name: 'Bubba Gump',
+  location: 'Via Di Olivia St. Henderson, Nevada',
+  categories: ['Seafood', 'All-American', 'Pasta', 'Vegetarian'],
+  starterMenu: [
+    'Calamari',
+    'Clam Chowder',
+    'Mozzarella Sticks',
+    'Garlic Bread',
+  ],
+  mainMenu: [
+    'Bacon Cheeseburger',
+    "Bucket O' Shrimp",
+    'Fish & Chips',
+    'Chicken Skillet',
+  ],
+
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+
+  // Pass in the index number of the item you want to order
+  order: function (starterIndex, mainIndex) {
+    // Return the item at the given index as the customer order
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery: function ({
+    time = '20:00',
+    address = 'Pickup Location',
+    mainIndex = 0,
+    starterIndex = 0,
+  }) {
+    console.log(
+      `You delivery of ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} will arrive at ${address} at ${time}`
+    );
+  },
+}; */
+
+// We are mutating the first value of the mainMenuCopy array, however, since all objects (arrays included) are reference types (meaning when you make a copy, you are not copying the actual value, you are copying the reference to the same value stored in memory), when we mutate what seems to be the copy, we mutate the actual value for which all copies of the reference point to, so it changes for the original copy too. Primitive values are fixed in size and space in memory, so they can be afforded their own space in memory can can be passed by value, in which this problem would never occur.
+// mainMenuCopy[0] = 'Ice Cream Sundae';
+// console.log(mainMenuCopy);
+// console.log(restaurant.mainMenu);
+
+// A solution is to make a shallow copy, meaning actually assigning a new variable the identical contents of the array to be copies
+/* const mainMenuCopy = [...restaurant.mainMenu];
+console.log(mainMenuCopy);
+console.log(restaurant.mainMenu);
+
+mainMenuCopy[0] = 'Rocky Road Ice Cream';
+console.log(mainMenuCopy);
+console.log(restaurant.mainMenu); */
+
+// const arr1 = [1, 2, 3, 4, 5];
+// const arr2 = [6, 7, 8, 9, 10];
+
+/* const joined = [...arr1, ...arr2]; */
+
+// const bills = [275, 40, 430];
+// let tips = [];
+
+// for (let i = 0; i < bills.length; i++) {
+// tips.push(
+// bills[i] >= 50 && bills[i] <= 300 ? bills[i] * 0.15 : bills[i] * 0.2
+// );
+// }
+
+// console.log(tips);
+
+// Iterables: arrays, strings, maps, sets. NOT objects
+// const str = 'Thomas';
+// const letters = [...str, ' Nelson'];
+// console.log(letters);
+
+const restaurant = {
+  name: 'Bubba Gump',
+  location: 'Via Di Olivia St. Henderson, Nevada',
+  categories: ['Seafood', 'All-American', 'Pasta', 'Vegetarian'],
+  starterMenu: [
+    'Calamari',
+    'Clam Chowder',
+    'Mozzarella Sticks',
+    'Garlic Bread',
+  ],
+  mainMenu: [
+    'Bacon Cheeseburger',
+    "Bucket O' Shrimp",
+    'Fish & Chips',
+    'Chicken Skillet',
+  ],
+
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+
+  // Pass in the index number of the item you want to order
+  order: function (starterIndex, mainIndex) {
+    // Return the item at the given index as the customer order
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery: function ({
+    time = '20:00',
+    address = 'Pickup Location',
+    mainIndex = 0,
+    starterIndex = 0,
+  }) {
+    console.log(
+      `You delivery of ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} will arrive at ${address} at ${time}`
+    );
+  },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
+};
+
+const ingredients = [
+  prompt("Let's make pasta! Ingredient 1?"),
+  prompt("Let's make pasta! Ingredient 2?"),
+  prompt("Let's make pasta! Ingredient 3?"),
+];
+
+restaurant.orderPasta(...ingredients);
