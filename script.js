@@ -934,6 +934,54 @@ console.log(restaurant.mainMenu); */
 // const letters = [...str, ' Nelson'];
 // console.log(letters);
 
+/* const restaurantCopy = {
+  foundedIn: '2001',
+  ...restaurant,
+  founder: 'Forrest Gump',
+};
+console.log(restaurantCopy); */
+
+/* const ingredients = [
+  prompt("Let's make pasta! Ingredient 1?"),
+  prompt("Let's make pasta! Ingredient 2?"),
+  prompt("Let's make pasta! Ingredient 3?"),
+];
+
+restaurant.orderPasta(...ingredients); */
+
+/* console.log(+'13'); */
+
+// SPREAD operator, because ... on RIGHT side of ASSIGNMENT operator (=)
+// const arr = [1, 2, ...[3, 4]];
+// RESULT: [1, 2, 3, 4]
+// console.log(arr);
+
+// REST operator, because ... on LEFT side of ASSIGNMENT operator (=)
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+// RESULT: a, b, [3, 4, 5];
+// console.log(a, b, others);
+
+/* const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+
+console.log(pizza, risotto, otherFood); */
+
+// Onjects rest
+/* const { sat: weekend, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+console.log(weekend); */
+
+/* const add = (...nums) => {
+  let sum = 0; // Accumulator
+  for (let i = 0; i < nums.length; i++) sum += nums[i];
+  return sum;
+};
+
+const numbers = [2, 43, 11, 30];
+console.log(add(...numbers)); */
+
 const restaurant = {
   name: 'Bubba Gump',
   location: 'Via Di Olivia St. Henderson, Nevada',
@@ -989,37 +1037,3 @@ const restaurant = {
     );
   },
 };
-
-/* const restaurantCopy = {
-  foundedIn: '2001',
-  ...restaurant,
-  founder: 'Forrest Gump',
-};
-console.log(restaurantCopy); */
-
-/* const ingredients = [
-  prompt("Let's make pasta! Ingredient 1?"),
-  prompt("Let's make pasta! Ingredient 2?"),
-  prompt("Let's make pasta! Ingredient 3?"),
-];
-
-restaurant.orderPasta(...ingredients); */
-
-/* console.log(+'13'); */
-
-// SPREAD operator, because ... on RIGHT side of ASSIGNMENT operator (=)
-// const arr = [1, 2, ...[3, 4]];
-// RESULT: [1, 2, 3, 4]
-// console.log(arr);
-
-// REST operator, because ... on LEFT side of ASSIGNMENT operator (=)
-// const [a, b, ...others] = [1, 2, 3, 4, 5];
-// RESULT: a, b, [3, 4, 5];
-// console.log(a, b, others);
-
-const [pizza, , risotto, ...otherFood] = [
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
-];
-
-console.log(pizza, risotto, otherFood);
