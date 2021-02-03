@@ -1004,3 +1004,5 @@ console.log(restaurantCopy); */
 ];
 
 restaurant.orderPasta(...ingredients); */
+
+console.log(+'13');
