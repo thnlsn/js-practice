@@ -982,70 +982,6 @@ console.log(weekend); */
 const numbers = [2, 43, 11, 30];
 console.log(add(...numbers)); */
 
-const restaurant = {
-  name: 'Bubba Gump',
-  location: 'Via Di Olivia St. Henderson, Nevada',
-  categories: ['Seafood', 'All-American', 'Pasta', 'Vegetarian'],
-  starterMenu: [
-    'Calamari',
-    'Clam Chowder',
-    'Mozzarella Sticks',
-    'Garlic Bread',
-  ],
-  mainMenu: [
-    'Bacon Cheeseburger',
-    "Bucket O' Shrimp",
-    'Fish & Chips',
-    'Chicken Skillet',
-  ],
-
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0,
-      close: 24,
-    },
-  },
-
-  // Pass in the index number of the item you want to order
-  order: function (starterIndex, mainIndex) {
-    // Return the item at the given index as the customer order
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-
-  orderDelivery: function ({
-    time = '20:00',
-    address = 'Pickup Location',
-    mainIndex = 0,
-    starterIndex = 0,
-  }) {
-    console.log(
-      `You delivery of ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} will arrive at ${address} at ${time}`
-    );
-  },
-
-  orderPasta: function (ing1, ing2, ing3) {
-    console.log(
-      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
-    );
-  },
-
-  orderPizza: function (mainIngredient, ...optionalIngredients) {
-    console.log(
-      `Here is your ${mainIngredient} pizza${
-        optionalIngredients.length > 0 ? ` with: ${optionalIngredients}!` : '!'
-      }`
-    );
-  },
-};
-
 /* restaurant.orderPizza('pepperoni', 'basil', 'bacon', 'ground beef'); */
 
 // Logical operators can: Use ANY data type, return ANY data type, and so short-circut evaluation (short-circuiting)
@@ -1161,3 +1097,92 @@ team1 > team2 && console.log('Team 2 is more likely to win.');
 console.log(
   '================================================================================================================'
 ); */
+
+/* const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const [i, item] of menu.entries()) {
+  console.log(`${i + 1}: ${item}`);
+} */
+
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+// Enhanced object literals: Computing a property name
+const openingHours = {
+  [weekdays[3]]: {
+    // thu
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    // fri
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    // sat
+    open: 0,
+    close: 24,
+  },
+};
+
+const restaurant = {
+  name: 'Bubba Gump',
+  location: 'Via Di Olivia St. Henderson, Nevada',
+  categories: ['Seafood', 'All-American', 'Pasta', 'Vegetarian'],
+  starterMenu: [
+    'Calamari',
+    'Clam Chowder',
+    'Mozzarella Sticks',
+    'Garlic Bread',
+  ],
+  mainMenu: [
+    'Bacon Cheeseburger',
+    "Bucket O' Shrimp",
+    'Fish & Chips',
+    'Chicken Skillet',
+  ],
+  // Enhanced object literals: saving a variable into a proprty
+  openingHours,
+
+  // Pass in the index number of the item you want to order
+  order(starterIndex, mainIndex) {
+    // Return the item at the given index as the customer order
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  // Enhanced object literals: shorthand way to define methods
+  orderDelivery({
+    time = '20:00',
+    address = 'Pickup Location',
+    mainIndex = 0,
+    starterIndex = 0,
+  }) {
+    console.log(
+      `You delivery of ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} will arrive at ${address} at ${time}`
+    );
+  },
+
+  orderPasta(ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
+
+  orderPizza(mainIngredient, ...optionalIngredients) {
+    console.log(
+      `Here is your ${mainIngredient} pizza${
+        optionalIngredients.length > 0 ? ` with: ${optionalIngredients}!` : '!'
+      }`
+    );
+  },
+};
+
+// We can check the value of the thu object of the openingHours object
+console.log(restaurant.openingHours.thu);
+
+// What if we want the mon object? What if a day doesn't exist but the we don't know that?
+console.log(restaurant.openingHours.mon); // undefined (which is ok, but what if we want to access a properties value of mon?)
+
+// What if we want a further property value?
+// Ask if mon exists, and only then do you ask for the further property value (otherwise we would get undefined and try to access open of undefined, which throws an error)
+if (restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open);
