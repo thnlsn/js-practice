@@ -1036,4 +1036,30 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
     );
   },
+
+  orderPizza: function (mainIngredient, ...optionalIngredients) {
+    console.log(
+      `Here is your ${mainIngredient} pizza${
+        optionalIngredients.length > 0 ? ` with: ${optionalIngredients}!` : '!'
+      }`
+    );
+  },
 };
+
+/* restaurant.orderPizza('pepperoni', 'basil', 'bacon', 'ground beef'); */
+
+// Logical operators can: Use ANY data type, return ANY data type, and so short-circut evaluation (short-circuiting)
+
+// With ||, it will return the first truthy value, else it will return the last value (kind of like a default value), which means no short-circuiting occured
+/* console.log(2 || 'Thomas'); //2
+console.log('' || 'Thomas'); //'Thomas'
+console.log(true || 0); //true
+console.log(undefined || null); //null */
+
+// With &&, it will return the first falsy value, else it will return the last value (kind of like a default value), which means no short-circuiting occured (opposite of ||)
+/* console.log(null && 0 && undefined && '' && 'Thomas');
+console.log('Thomas' && 100 && true && '' && 'Thomas');
+console.log(false && false && false && '' && 'Thomas');
+console.log(true && true && true && '0' && 'Thomas'); */
+
+// restaurant.orderPizza && restaurant.orderPizza('cheese', 'lemon');
