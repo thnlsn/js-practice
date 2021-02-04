@@ -1120,7 +1120,7 @@ const openingHours = {
   },
   [weekdays[5]]: {
     // sat
-    open: 0,
+    open: 0, // 12am
     close: 24,
   },
 };
@@ -1178,11 +1178,50 @@ const restaurant = {
 };
 
 // We can check the value of the thu object of the openingHours object
-console.log(restaurant.openingHours.thu);
+// console.log(restaurant.openingHours.thu);
 
 // What if we want the mon object? What if a day doesn't exist but the we don't know that?
-console.log(restaurant.openingHours.mon); // undefined (which is ok, but what if we want to access a properties value of mon?)
+// console.log(restaurant.openingHours.mon); // undefined (which is ok, but what if we want to access a properties value of mon?)
 
 // What if we want a further property value?
 // Ask if mon exists, and only then do you ask for the further property value (otherwise we would get undefined and try to access open of undefined, which throws an error)
-if (restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open);
+// if (restaurant.openingHours.mon) {
+// console.log(restaurant.openingHours.mon.open);
+// } else {
+// console.log(
+// 'Sorry, there is no data for that day. The restaurant is probably closed.'
+// );
+// }
+
+// So the crux of the problem is when you have to access nested values in an object but you do not know whether those values even exists, and if you try to do so, you will get an error of trying to access something of undefined, since the previous object didn't exist. You could use nested if/else statements, but there is a better way...
+
+// One way is the following:
+// if (
+// restaurant &&
+// restaurant.openingHours &&
+// restaurant.openingHours.mon &&
+// restaurant.openingHours.mon.open
+// Using && short-circuiting to check if something exists, and if so if the nested property exists, and if so... etc... (since && returns false if ANY operand is false, if none are then it will return the last value, and thus equate to truthy for the sake of the if else conditional)
+// ) {
+// console.log(`Opening hour: ${restaurant.openingHours.mon.open}`);
+// }
+
+// This works, but can be a huge pain in deeply nested objects. There is a solution that will always return undefined in the case of something in the chain not existing, which is alright because at least that will not throw an error, as seen in the first example above when accessing mon
+
+// Enter -> Optional Chaining (ES2020)
+/* console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours.fri?.open); */
+
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+/* for (const day of days) {
+  console.log(day);
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`);
+} */
+
+/* console.log(restaurant.orderDelivery?.(0, 1) ?? 'ERR: Method does not exist'); */
+
+// Arrays
+const users = [{ name: 'Thomas', email: 'thnlsn@gmail.com' }];
+console.log(users[0]?.name ?? 'User array empty');
