@@ -1223,5 +1223,15 @@ const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 /* console.log(restaurant.orderDelivery?.(0, 1) ?? 'ERR: Method does not exist'); */
 
 // Arrays
-const users = [{ name: 'Thomas', email: 'thnlsn@gmail.com' }];
-console.log(users[0]?.name ?? 'User array empty');
+// const users = [{ name: 'Thomas', email: 'thnlsn@gmail.com' }];
+// console.log(users[0]?.name ?? 'User array empty');
+
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+let openStr = `We are open on ${properties.length} days: `;
+
+for (const day of Object.keys(openingHours)) {
+  openStr += `${day}, `;
+}
+console.log(openStr);
