@@ -2,3 +2,4 @@ Terms:
 
 Set
     - A datastructure that will never contain any duplicate values
+    - It can only contain iterables (array being the most common use)

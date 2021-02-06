@@ -1381,7 +1381,7 @@ func(args); */
         63 27 -4+4 --- xx xx - 36
 */
 
-// SET: Contains no dupicate values
+// SET: Contains no dupicate values, can only take in an iterable
 const ordersSet = new Set([
   'Pasta',
   'Pizza',
@@ -1392,3 +1392,13 @@ const ordersSet = new Set([
 ]);
 
 console.log(ordersSet);
+console.log(ordersSet.size); // How many elements are in the set? -- 3
+console.log(ordersSet.has('Pizza')); // Does the set have 'Pizza'? -- true
+console.log(ordersSet.has('Bread')); // Does the set have 'Bread'? -- false
+ordersSet.add('Garlic Bread'); // Add an element to the set
+ordersSet.add('Garlic Bread'); // Adding an element that already exists within the set will be ignored
+ordersSet.delete('Risotto'); // Delete an element in the set
+// ordersSet.clear(); // Clear the entire set
+console.log(ordersSet);
+// You cannot retrieve a value from a set (like how you can do arr[17] in an array) because all items are unique and only exist once, so there is no need to ever retrieve anything, rather to just check if it exists
+// for (const order of ordersSet) console.log(order); // Sets can be looped through
