@@ -26,3 +26,53 @@ Map
 
 Immutable types
     - Primitive types are immutable because they are typed by value rather than by reference
+
+.slice()
+    - Start parameter stays in, end parameter is cut.
+        - '0123456789'.slice(1, 8) => // '1234567'
+        - '0123456789'.slice(0, -5) => // '01234'
+    - If end parameter is omitted, it will take the start parameter and keep everything after
+        - '0123456789'.slice(6) => // '6789'
+        - '0123456789'.slice(-2) => // '89'
+
+How can strings have methods if they are primitives and not objects?
+    - When you invoke any string method (.slice(), .indexOf(), etc.) or even access an index with bracket notation ('thomas'[0]), JavaScript is actually converting the string into an object (new String('string')), and it is on that object that the method is attached and being invoked from. After the execution of the method, it is converted back into a primitive string and returned, because primitives cannot be mutated.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function changeObject(x) {
+  x = { member: 'bar' };
+  console.log('in changeObject: ' + x.member);
+}
+
+function changeMember(x) {
+  x.member = 'bar';
+  console.log('in changeMember: ' + x.member);
+}
+
+var x = { member: 'foo' };
+
+console.log('before changeObject: ' + x.member);
+changeObject(x);
+console.log('after changeObject: ' + x.member); /* change did not persist */
+
+console.log('before changeMember: ' + x.member);
+changeMember(x);
+console.log('after changeMember: ' + x.member); /* change persists */

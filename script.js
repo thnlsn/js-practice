@@ -1634,26 +1634,31 @@ console.log(airline.indexOf('portugal')); // Returns -1 if it does not exist
 
 // String methods always return the new string they create, because string (primitive types) are immutable, so rather than changing them in memory, a new one is created.
 console.log(airline.slice(4)); // The argument is the START parameter, so saving index 4, but cut everything before it, since it is the START of the new string
-console.log(airline.slice(4, 7)); // The second argument is the END parameter, so it will cut index 7 and beyond, unline the start parameter.
+console.log(airline.slice(4, 7)); // The second argument is the END parameter, so it will cut index 7 and beyond, unlike the start parameter.
+// Side note: The length of the new/returned string will always be the END parameter - START parameter
 
-console.log('\n \n \n');
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // Leaving out the END parameter will just return everything after the START parameter
 
-function changeObject(x) {
-  x = { member: 'bar' };
-  console.log('in changeObject: ' + x.member);
-}
+console.log(airline.slice(-2)); // -START parameter, so it will go that many letters backward and include it and everything after
+console.log(airline.slice(1, -1)); // Start at first index, end at -1 from the end
 
-function changeMember(x) {
-  x.member = 'bar';
-  console.log('in changeMember: ' + x.member);
-}
+const checkMiddleSeat = function (seat) {
+  const letter = seat.slice(-1); // Keep the last 1 character of the string
+  letter === 'B' || letter === 'E'
+    ? console.log('Middle seat!')
+    : console.log('Eisle or window seat!');
+};
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('5E');
 
-var x = { member: 'foo' };
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
 
-console.log('before changeObject: ' + x.member);
-changeObject(x);
-console.log('after changeObject: ' + x.member); /* change did not persist */
-
-console.log('before changeMember: ' + x.member);
-changeMember(x);
-console.log('after changeMember: ' + x.member); /* change persists */
+// How would we fix this string if a passenger wrote it incorrectly?
+const passengerName = 'tHoMaS';
+const passengerLower = passengerName.toLowerCase(); // Turn it all lowercase
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1); // Take the first index
+console.log(passengerCorrect);
