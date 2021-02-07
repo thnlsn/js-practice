@@ -21,4 +21,5 @@ Map
         - .size -- similar to .length on an array
     - Converting a map to an object and vice versa?
 
-When to use 1
+.pop()
+    - Deletes the last element in an array AND returns that element's value (can be useful if you just need the value of the last element)
