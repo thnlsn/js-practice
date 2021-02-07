@@ -1657,8 +1657,38 @@ console.log(airline.toLowerCase());
 console.log(airline.toUpperCase());
 
 // How would we fix this string if a passenger wrote it incorrectly?
-const passengerName = 'tHoMaS';
+const passengerName = 'tHoMaS'; // 'tHoMaS'
 const passengerLower = passengerName.toLowerCase(); // Turn it all lowercase
 const passengerCorrect =
-  passengerLower[0].toUpperCase() + passengerLower.slice(1); // Take the first index
-console.log(passengerCorrect);
+  passengerLower[0].toUpperCase() + passengerLower.slice(1); // Take the first index/letter and make it uppercase, then add to that the lowercase string without the first letter
+console.log(passengerCorrect); // 'Thomas'
+
+// Comparing emails
+const email = 'hello@thomas.io';
+const loginEmail = 'Hello@Thomas.Io \n'; // Emails are still valid with strange capitalization
+
+const normalizedEmail = loginEmail.toLowerCase().trim(); // There is also trimStart() and trimEnd()
+console.log(normalizedEmail === email);
+
+const priceGB = '288,97£';
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcement =
+  'All passengers come to boarding door 23. Boarding door 23!';
+
+console.log(announcement.replace('door', 'gate'));
+console.log(announcement.replace(/door/g, 'gate')); // Replace all occurences (global) of 'door' to 'gate'
+
+// Some methods return booleans rather than the new string:
+const airbus = 'Airbus A320neo';
+console.log(airbus.includes('A320'));
+console.log(airbus.includes('Boeing'));
+console.log(airbus.startsWith('A'));
+console.log(airbus.startsWith('Airb'));
+
+if (airbus.startsWith('Airbus') && airbus.endsWith('neo')) {
+  console.log('Part of the NEW Airbus family!')
+}
+
+const
