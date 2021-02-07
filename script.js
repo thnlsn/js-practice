@@ -1581,7 +1581,7 @@ Let's continue with our football betting app! This time, we have a map with a lo
 GOOD LUCK 😀
 */
 
-const gameEvents = new Map([
+/* const gameEvents = new Map([
   [17, '⚽️ GOAL'],
   [36, '🔁 Substitution'],
   [47, '⚽️ GOAL'],
@@ -1611,4 +1611,49 @@ console.log(`An event happened, on average, every ${avg} minutes`);
 
 // 4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this: [FIRST HALF] 17: ⚽️ GOAL
 for (const [minute, event] of gameEvents)
-  console.log(`[${minute <= 45 ? 'FIRST' : 'SECOND'} HALF]: ${event}`);
+  console.log(
+    `[${minute <= 45 ? 'FIRST' : 'SECOND'} HALF] ${minute}: ${event}`
+  ); */
+
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+// You can access a letter at a certain index just like an array
+console.log(plane[0]);
+console.log(plane[2]);
+console.log(plane[3]);
+
+console.log(airline.length);
+console.log(plane.length);
+
+// Strings are 0 based like arrays
+console.log(airline.indexOf('r')); // Index of the first occurence of the letter 'r'
+console.log(airline.lastIndexOf('r')); // Index of the last occurence of the letter 'r'
+console.log(airline.indexOf('Portugal')); // First index of the string searched within the string
+console.log(airline.indexOf('portugal')); // Returns -1 if it does not exist
+
+// String methods always return the new string they create, because string (primitive types) are immutable, so rather than changing them in memory, a new one is created.
+console.log(airline.slice(4)); // The argument is the START parameter, so saving index 4, but cut everything before it, since it is the START of the new string
+console.log(airline.slice(4, 7)); // The second argument is the END parameter, so it will cut index 7 and beyond, unline the start parameter.
+
+console.log('\n \n \n');
+
+function changeObject(x) {
+  x = { member: 'bar' };
+  console.log('in changeObject: ' + x.member);
+}
+
+function changeMember(x) {
+  x.member = 'bar';
+  console.log('in changeMember: ' + x.member);
+}
+
+var x = { member: 'foo' };
+
+console.log('before changeObject: ' + x.member);
+changeObject(x);
+console.log('after changeObject: ' + x.member); /* change did not persist */
+
+console.log('before changeMember: ' + x.member);
+changeMember(x);
+console.log('after changeMember: ' + x.member); /* change persists */

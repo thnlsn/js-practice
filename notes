@@ -23,3 +23,6 @@ Map
 
 .pop()
     - Deletes the last element in an array AND returns that element's value (can be useful if you just need the value of the last element)
+
+Immutable types
+    - Primitive types are immutable because they are typed by value rather than by reference
