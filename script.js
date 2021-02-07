@@ -1104,7 +1104,7 @@ for (const [i, item] of menu.entries()) {
   console.log(`${i + 1}: ${item}`);
 } */
 
-const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+/* const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 // Enhanced object literals: Computing a property name
 const openingHours = {
@@ -1175,7 +1175,7 @@ const restaurant = {
       }`
     );
   },
-};
+}; */
 
 // We can check the value of the thu object of the openingHours object
 // console.log(restaurant.openingHours.thu);
@@ -1381,7 +1381,7 @@ func(args); */
         63 27 -4+4 --- xx xx - 36
 */
 
-// SET: Contains no dupicate values, can only take in an iterable
+/* // SET: Contains no dupicate values, can only take in an iterable
 const ordersSet = new Set([
   'Pasta',
   'Pizza',
@@ -1402,3 +1402,213 @@ ordersSet.delete('Risotto'); // Delete an element in the set
 console.log(ordersSet);
 // You cannot retrieve a value from a set (like how you can do arr[17] in an array) because all items are unique and only exist once, so there is no need to ever retrieve anything, rather to just check if it exists
 // for (const order of ordersSet) console.log(order); // Sets can be looped through
+
+// USE CASE FOR SET: Let's say we have an array of all the positions all employees have in a restaurant...
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = new Set(staff); // arrays are iterables so we can pass it in
+console.log(staffUnique); // Now we have a list of all jobs currently filled, so the restaurant can see a basic overview of what jobs currently have *any number of* hands on deck
+// What if we need it to be retrievable for some reason? Convert it back to an array...
+console.log([...staffUnique]); // We spread the iterable (set) into a newly constructed array
+// If we wanted to see how many positions there are total inside an array of jobs, we can convert it to a set and use the size property
+console.log(new Set(staff).size);
+
+console.log(new Set('thomasnelson').size); // 9 unique letters in my name */
+
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+// Enhanced object literals: Computing a property name
+const openingHours = {
+  [weekdays[3]]: {
+    // thu
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    // fri
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    // sat
+    open: 0, // 12am
+    close: 24,
+  },
+};
+
+const rest = {
+  name: 'Bubba Gump',
+  location: 'Via Di Olivia St. Henderson, Nevada',
+  categories: ['Seafood', 'All-American', 'Pasta', 'Vegetarian'],
+  starterMenu: [
+    'Calamari',
+    'Clam Chowder',
+    'Mozzarella Sticks',
+    'Garlic Bread',
+  ],
+  mainMenu: [
+    'Bacon Cheeseburger',
+    "Bucket O' Shrimp",
+    'Fish & Chips',
+    'Chicken Skillet',
+  ],
+  // Enhanced object literals: saving a variable into a proprty
+  openingHours,
+
+  // Pass in the index number of the item you want to order
+  order(starterIndex, mainIndex) {
+    // Return the item at the given index as the customer order
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  // Enhanced object literals: shorthand way to define methods
+  orderDelivery({
+    time = '20:00',
+    address = 'Pickup Location',
+    mainIndex = 0,
+    starterIndex = 0,
+  }) {
+    console.log(
+      `You delivery of ${this.mainMenu[mainIndex]} and ${this.starterMenu[starterIndex]} will arrive at ${address} at ${time}`
+    );
+  },
+
+  orderPasta(ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
+
+  orderPizza(mainIngredient, ...optionalIngredients) {
+    console.log(
+      `Here is your ${mainIngredient} pizza${
+        optionalIngredients.length > 0 ? ` with: ${optionalIngredients}!` : '!'
+      }`
+    );
+  },
+};
+
+// MAP: A data structure that can be used to map values to keys
+// Similar to objects, data is stored in key/value pairs, however in maps, the KEYS can have any type
+
+/* const restaurant = new Map();
+// The set method adds a new key/value pair AND returns the set immidiately.
+restaurant.set('name', 'Bubba Gump');
+restaurant.set(1, 'Los Angeles, California');
+restaurant.set(2, 'Manila, Philippines');
+
+// Because the set method returns the map, you can chain set methods and call them on another set, since it is in the end a value equal to the set itself
+restaurant
+  .set('categories', ['Seafood', 'All-American', 'Pasta', 'Vegetarian'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open!')
+  .set(false, 'We are closed.');
+
+console.log(restaurant.get('name'));
+console.log(restaurant.get(true));
+
+console.log(restaurant);
+
+const time = 21;
+// Having a boolean as a map key can make for a clever way to retrive data...
+console.log(
+  // The logical expression here is either going to return true or false, if the time is greater than the open key value (11) AND less than the close key value (23), return true
+  // This means that the value inside the initial restaurant.get(<key-to-search>) will be either true or false, which will then retrieve the value of the true or false keys
+  restaurant.get(
+    time > restaurant.get('open') && time < restaurant.get('close')
+  )
+);
+
+console.log(restaurant.has('categories')); // -- true
+restaurant.delete(2); // delete the 2 key (and it's mapped value)
+console.log(restaurant.size);
+
+console.log(restaurant);
+
+restaurant.set([1, 2], 'Test');
+// Why doesn't this work?
+console.log(restaurant.get([1, 2])); // RESULT = undefined */
+// We have a key ([1, 2]), and we are trying to access it's value with the get() map method by passing in the array [1, 2] as the key to look for, but it does not work.
+// The reason is that the moment we use the set() method, we have created that object (array) in memory with a reference to that exact one in the heap (example memory address: 1F72).
+// The object [1, 2] in memory that the key is referencing is the one at memory address 1F72, but when we use the get() method, we pass in another object (array) that is the same in terms of value, but it now has it's own space in the heap with it's own reference to it (so like memory address 9E10).
+// So when we try to use .get(), it is looking through the keys in map for object referenced at address 9E10, but it cannot find it, because it doesn't exist in the map. Rather the object with reference to memory address 1F72 is there.
+
+/* const questionObj = {
+  question: 'What is the best programming language in the world?',
+  1: 'C',
+  2: 'Java',
+  3: 'JavaScript',
+  correct: 3,
+  true: 'Correct!',
+  false: 'Try again!',
+};
+// Here is an object and below is a way to convert that object to a map
+console.log(new Map(Object.entries(questionObj)));
+// First it does Object.entries() on the object, turning it into an array of arrays with index 0 being their keys and index 1 being their values
+// Then we create a map on that array to where the index 1 of each array becomes the key of the map, while index 1 becomes the value it is mapped to */
+
+/* const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct!'],
+  [false, 'Try again!'],
+]);
+console.log(question);
+
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  typeof key === 'number' && console.log(`Option ${key}: ${value}`);
+}
+const answer = 3;
+// First operand should convert to 1, 2, or 3 (number) and the second should convert to 3 (number), the correct number, which means the expression as a whole will convert to a boolean
+console.log(question.get(question.get('correct') === answer)); */
+
+///////////////////////////////////////
+// Coding Challenge #3
+
+/* 
+Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+
+1. Create an array 'events' of the different game events that happened (no duplicates)
+2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+      [FIRST HALF] 17: ⚽️ GOAL
+
+GOOD LUCK 😀
+*/
+
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+// 1. Create an array 'events' of the different game events that happened (no duplicates)
+console.log(gameEvents);
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+
+// 2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+gameEvents.delete(64);
+console.log(gameEvents);
+
+// 3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+const minutes = [...gameEvents.keys()];
+const avg = 90 / minutes.length;
+console.log(`An event happened, on average, every ${avg} minutes`);
+
+// 4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this: [FIRST HALF] 17: ⚽️ GOAL
+for (const [minute, event] of gameEvents)
+  console.log(`[${minute <= 45 ? 'FIRST' : 'SECOND'} HALF]: ${event}`);

@@ -1,5 +1,24 @@
 Terms:
 
 Set
-    - A datastructure that will never contain any duplicate values
-    - It can only contain iterables (array being the most common use)
+    - A data structure that will never contain any duplicate values.
+    - It can only contain iterables (array being the most common use, but strings work too).
+    - A set is an iterable, so it can be spread (unpacked and listed out comma seperated).
+    - If you need to manipulate data, or the data order matters, sets are not the best use-case and an array would be better suited
+    - CRUD methods on a set? EXPLAIN.
+        - .add() -- Also returns the set, so you can chain .add() methods
+        - .has(), .delete(), .clear()
+    - Useful properties?
+        - .size -- similar to .length on an array
+    - Converting a set to an array and vice versa?
+
+Map
+    - A data structure similar to an object, but keys can be any data type (boolean, object, array, number, etc.)
+    - CRUD methods on a map? EXPLAIN.
+        - .set(key, value) -- Also returns the map, so you can chain .set() methods
+        - .has(), .delete(), .get(), clear()
+    - Useful properties?
+        - .size -- similar to .length on an array
+    - Converting a map to an object and vice versa?
+
+When to use 1
