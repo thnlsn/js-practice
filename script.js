@@ -1615,7 +1615,7 @@ for (const [minute, event] of gameEvents)
     `[${minute <= 45 ? 'FIRST' : 'SECOND'} HALF] ${minute}: ${event}`
   ); */
 
-const airline = 'TAP Air Portugal';
+/* const airline = 'TAP Air Portugal';
 const plane = 'A320';
 
 // You can access a letter at a certain index just like an array
@@ -1659,8 +1659,9 @@ console.log(airline.toUpperCase());
 // How would we fix this string if a passenger wrote it incorrectly?
 const passengerName = 'tHoMaS'; // 'tHoMaS'
 const passengerLower = passengerName.toLowerCase(); // Turn it all lowercase
-const passengerCorrect =
-  passengerLower[0].toUpperCase() + passengerLower.slice(1); // Take the first index/letter and make it uppercase, then add to that the lowercase string without the first letter
+const passengerCorrect = passengerLower[0]
+  .toUpperCase()
+  .concat(passengerLower.slice(1)); // Take the first index/letter and make it uppercase, then add to that the lowercase string without the first letter
 console.log(passengerCorrect); // 'Thomas'
 
 // Comparing emails
@@ -1688,7 +1689,102 @@ console.log(airbus.startsWith('A'));
 console.log(airbus.startsWith('Airb'));
 
 if (airbus.startsWith('Airbus') && airbus.endsWith('neo')) {
-  console.log('Part of the NEW Airbus family!')
+  console.log('Part of the NEW Airbus family!');
 }
 
-const
+const checkBaggage = function (items) {
+  const string = items.toLowerCase();
+  console.log(
+    string.includes('knife') ||
+      string.includes('gun') ||
+      string.includes('food') ||
+      string.includes('drink') ||
+      string.includes('liquid')
+      ? 'You are not allowed on board.'
+      : 'Welcome aboard!'
+  );
+};
+checkBaggage('I have a laptop, some food, and a pocket knife');
+checkBaggage('Socks and a camera');
+checkBaggage('Got some snacks and a gun for protection'); */
+
+/* const pin = 1111;
+const maxWithdraw = 50;
+
+const requireCard = function (realCardNumber) {
+  const cardGuess = prompt('please enter your card number');
+  if (cardGuess === realCardNumber) {
+    alert('Correct 💳');
+    return true;
+  } else {
+    alert('incorrect try again later');
+    return false;
+  }
+};
+const withDraw = function (amount) {
+  // withdraw money
+  if (amount > maxWithdraw) {
+    alert(`You cannot withdraw ${amount} try again later`);
+    return;
+  } else {
+    alert(`successfuly withdrew ${amount}$`);
+    moneyOut += amount;
+    console.log(moneyOut); // log to the console how much money they have taken out
+  }
+};
+
+const deposit = function (amount) {
+  // deposit
+};
+
+const lottery = function (bidAmount) {
+  // lottery
+};
+
+const pass = function () {
+  // if pin correct
+  alert('Correct pin ✔');
+
+  // what would they like to do today
+  alert('What would you like to do today?');
+
+  const option = prompt('❓');
+  // withdraw or deposit
+  if (option === 'withdraw money') {
+    // withdraw
+    if (requireCard()) {
+      alert('How much would you like to withdraw?');
+      const withDrawAmount = prompt(
+        'Enter an amount you will like to withdraw'
+      );
+      withDraw(withDrawAmount);
+    } else {
+      return;
+    }
+  } else if (option === 'deposit money') {
+    // deposit
+  } else if (option === 'play lottery') {
+    // play lottery
+  }
+};
+const myName = 'john';
+const middleName = 'jan';
+const fullName = `${myName} doe`;
+const cardNumber = '4444 1111 6666 2222';
+
+// personal information
+const address = '123 drive';
+
+let moneyIn; // refers to how much they have in their bank account right now
+let moneyOut = 0; // refers to how much they have  out of their bank
+
+alert(`Welcome back ${fullName} please enter your pin to continue`);
+const pinGuess = prompt('Pin🔐');
+
+if (Number(pinGuess) === pin) {
+  pass();
+} else if (Number(pinGuess) > 9999 || Number(pinGuess) < 1000) {
+  alert('not a vaild pin format');
+} else {
+  alert('incorrect pin try again later');
+} */
