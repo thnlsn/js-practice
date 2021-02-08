@@ -1788,3 +1788,11 @@ if (Number(pinGuess) === pin) {
 } else {
   alert('incorrect pin try again later');
 } */
+
+const str = 'a+very+long+nice+string+indeed';
+console.log(str.split('+')); // Return an array of substrings seperated by a pattern/string used as the divider
+
+const [firstName, lastName] = 'Thomas Nelson'.split(' '); // Seperate the string by a space to get the first and last name, and destructure the returned array into first and last variables.
+console.log(firstName, lastName);
+
+console.log(['Mr.', firstName, lastName.toUpperCase()].join(' ')); // Take an array of values and join them into a string using the first parameter as the "glue" so to speak
