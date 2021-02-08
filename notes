@@ -38,7 +38,15 @@ Immutable types
 How can strings have methods if they are primitives and not objects?
     - When you invoke any string method (.slice(), .indexOf(), etc.) or even access an index with bracket notation ('thomas'[0]), JavaScript is actually converting the string into an object (new String('string')), and it is on that object that the method is attached and being invoked from. After the execution of the method, it is converted back into a primitive string and returned, because primitives cannot be mutated.
 
-
+String methods:
+    - indexOf, lastIndexOf, firstIndexOf
+    - []
+    - replace
+    - join, split
+    - slice
+    - toUpperCase, toLowerCase
+    - trim, trimLeft, trimRight
+    - padStart, padEnd
 
 
 
