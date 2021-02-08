@@ -49,6 +49,9 @@ String methods:
     - padStart, padEnd
     - repeat
 
+Instantiate vs Initialize
+
+Const(ant) vs read-only
 
 
 

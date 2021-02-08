@@ -1906,3 +1906,24 @@ for (const row of flights.split('+')) {
   arr.push(`(${time.replace(':', 'h')})`);
   console.log(arr.join(' ').padStart(44, ' '));
 } */
+/* const bookings = [];
+let totalProfit = 0;
+
+const createBooking = function (
+  flightNum,
+  numPassengers = 1,
+  price = 199,
+  profit = price * numPassengers
+) {
+  const booking = {
+    flightNum,
+    numPassengers,
+    price,
+  };
+  totalProfit += profit;
+  bookings.push(booking);
+};
+
+console.log(createBooking('LH123', 57, 299));
+console.log(bookings);
+console.log(totalProfit); */
