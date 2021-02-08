@@ -47,6 +47,40 @@ String methods:
     - toUpperCase, toLowerCase
     - trim, trimLeft, trimRight
     - padStart, padEnd
+    - repeat
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Function to replace a character in a string at a particular index with a different character
+const replaceAt = function (str, index, replacement) {
+  const end = str.slice(index);
+  const replaced = end.replace(end[0], replacement);
+  return str.slice(0, index) + replaced;
+};
 
 
 
