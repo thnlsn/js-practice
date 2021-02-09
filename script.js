@@ -1,4 +1,5 @@
 'use strict';
+console.log('\n\n\n\n\n\n\n\n\n\n\n');
 // LECTURE: Values and Variables
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1927,3 +1928,58 @@ const createBooking = function (
 console.log(createBooking('LH123', 57, 299));
 console.log(bookings);
 console.log(totalProfit); */
+
+/* const flight = 'LH234';
+const thomas = {
+  name: 'Thomas Nelson',
+  passport: 861215003,
+};
+
+const checkIn = function (flightNum, passenger) {
+  flightNum = 'LH999';
+  passenger.name = 'Mr. ' + passenger.name;
+  if (passenger.passport === 861215003) {
+    console.log('CHECKED IN');
+  } else {
+    console.log('WRONG PASSPORT');
+  }
+}; */
+
+// checkIn(flight, thomas);
+
+// Original variables
+// console.log(flight); // Will change -- because the argument is simply a copy of the reference to the object in the heap, so changing it in the function will change it outside the function
+// console.log(thomas); // Won't change -- because since it is a copy of a primitive value, it will instead create a new spot in memory for the new value and not point to the same one as outside
+
+/* const newPassport = function (person) {
+  person.passport = Math.trunc(Math.random() * 100000000);
+};
+newPassport(thomas); // passport value of thomas is changed inside the function, which changes it outside because reference types
+console.log(thomas.passport); // new value
+checkIn(flight, thomas); // fails the conditional because it uses the original passport which has been changed */
+
+// Pass by value | Pass by reference
+// JavaScript does not have passing by reference, only pass by value
+// Yes, when we pass in objects, we are passing A reference, but that reference is a value. The value of the variable is a reference to the memory address of the value
+
+// console.log({ foo: 'bar' } === { foo: 'bar' });
+
+// First-Class Functions
+
+const oneWord = function (str) {
+  return str.replaceAll(' ', '').toLowerCase();
+};
+
+const upperFirstWord = function (str) {
+  const [firstWord, ...otherWords] = str.split(' '); // Split a sentence into an array of words seperated by a space, then taking the REST of the words and packing them into an array
+  return [firstWord.toUpperCase(), ...otherWords].join(' '); // Return array where the first index is the first word capitalized the rest are SPREAD out, then join them to one string
+};
+
+const transformer = function (str, cb) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${cb(str)}`);
+
+  console.log(`Transformed by: ${cb.name}`);
+};
+
+transformer('JavaScript is the best!', oneWord);

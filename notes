@@ -24,8 +24,14 @@ Map
 .pop()
     - Deletes the last element in an array AND returns that element's value (can be useful if you just need the value of the last element)
 
-Immutable types
-    - Primitive types are immutable because they are typed by value rather than by reference
+Immutable types vs Mutable types (and assignment)
+    - Primitive types are immutable because they are typed by value.
+        - You cannot take a primitive and change it's value, you can however, reassign it.
+        - If you reassign a primitive, you will simply point to a new address, rather than changing the original one.
+    - Objects are mutable because they are typed by reference.
+        - You can take an object and change it's value by reassigning it's properties or adding/deleting elements.
+
+Compare by value vs by reference
 
 .slice()
     - Start parameter stays in, end parameter is cut.
@@ -52,6 +58,16 @@ String methods:
 Instantiate vs Initialize
 
 Const(ant) vs read-only
+
+Default function arguments (and using expressions in them)
+
+First-Class Functions
+
+Higher-Order Functions
+
+Callback Functions
+
+Abstraction (levels of abstraction)
 
 
 
