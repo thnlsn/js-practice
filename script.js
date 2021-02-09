@@ -1,5 +1,5 @@
 'use strict';
-console.log('\n\n\n\n\n\n\n\n\n\n\n');
+console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n');
 // LECTURE: Values and Variables
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1966,7 +1966,7 @@ checkIn(flight, thomas); // fails the conditional because it uses the original p
 
 // First-Class Functions
 
-const oneWord = function (str) {
+/* const oneWord = function (str) {
   return str.replaceAll(' ', '').toLowerCase();
 };
 
@@ -1982,4 +1982,55 @@ const transformer = function (str, cb) {
   console.log(`Transformed by: ${cb.name}`);
 };
 
-transformer('JavaScript is the best!', oneWord);
+transformer('JavaScript is the best!', oneWord); */
+
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({
+      flight: `flight: ${this.iataCode}${flightNum}`,
+      name,
+    });
+  },
+};
+
+lufthansa.book('239', 'Thomas Nelson');
+lufthansa.book('623', 'Ethan Santiago');
+console.log(lufthansa);
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
+book.call(eurowings, 613, 'James Earl');
+console.log(eurowings);
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+book.call(swiss, 553, 'James Francis');
+console.log(swiss);
+
+// call() and apply() immidiately call the function given the thing 'this' should be bound to, and the arguments to pass into the function call()/apply() was a method of.
+// bind() returns a new function where the 'this' keyword is already bound to the function it was a method of. From this point you can call the new function and 'this' will be bound correctly.
+
+const bookEW = book.bind(eurowings); // Takes in the element that you want 'this' to be bound to
+const bookLH = book.bind(lufthansa); // Takes in the element that you want 'this' to be bound to
+const bookLX = book.bind(swiss); // Takes in the element that you want 'this' to be bound to
+bookEW(432, 'Henry Cavill');
+
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Jimmy Garopollo');
+bookEW23('George Kittle');

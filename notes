@@ -62,12 +62,20 @@ Const(ant) vs read-only
 Default function arguments (and using expressions in them)
 
 First-Class Functions
+    - The concept of functions being values, or being treated as first-class citizens.
+    - There is no tangible piece of code that is considered a first-class function, it is more an idea or concept of programming languages.
 
 Higher-Order Functions
+    - A function that either takes in a function as an argument or returns a function, or both.
+    - Higher-order comes from the fact that these functions are at a higher-level of abstraction. They are less concerned with how something happens, more so that it DOES happen. It does not care how the callback might affect or change some piece of data, it simply wants the data to be changes/affected. The actual callback can be seen as a at a lower-level of abstraction.
 
-Callback Functions
+Callback Functions *
 
 Abstraction (levels of abstraction)
+
+.call, .apply, .bind
+
+Partial Application
 
 
 
