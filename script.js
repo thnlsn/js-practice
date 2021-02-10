@@ -2069,12 +2069,12 @@ console.log(addVAT2(300)); */
 // Let's build a simple poll app!
 // A poll has a question, an array of options from which people can choose, and an array with the number of replies for each option. This data is stored in the starter object below.
 // Here are your tasks:
-const poll = {
+/* const poll = {
   question: 'What is your favourite programming language?',
   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
   // This generates [0, 0, 0, 0]. More in the next section 😃
   answers: new Array(4).fill(0),
-};
+}; */
 // 1. Create a method called 'registerNewAnswer' on the 'poll' object. The method does 2 things:
 // 1.1. Display a prompt window for the user to input the number of the selected option. The prompt should look like this:
 /*
@@ -2117,7 +2117,7 @@ What is your favourite programming language?
   this.displayResults();
 }; */
 
-poll.registerNewAnswer = function () {
+/* poll.registerNewAnswer = function () {
   let choices = '';
   for (const option of this.options) choices += `\n${option}`;
   // Get answer
@@ -2129,15 +2129,15 @@ poll.registerNewAnswer = function () {
     this.answers[answer] += 1;
   this.displayResults();
   this.displayResults('string');
-};
+}; */
 
 // 2. Call this method whenever the user clicks the "Answer poll" button.
-document
+/* document
   .querySelector('.poll')
-  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+  .addEventListener('click', poll.registerNewAnswer.bind(poll)); */
 
 // 3. Create a method 'displayResults' which displays the poll results. The method takes a string as an input (called 'type'), which can be either 'string' or 'array'. If type is 'array', simply display the results array as it is, using console.log(). This should be the default option. If type is 'string', display a string like "Poll results are 13, 2, 4, 1".
-poll.displayResults = function (type = 'array') {
+/* poll.displayResults = function (type = 'array') {
   switch (type) {
     case 'string':
       console.log(`Poll results are ${this.answers.join(', ')}`);
@@ -2145,7 +2145,7 @@ poll.displayResults = function (type = 'array') {
     default:
       console.log(this.answers);
   }
-};
+}; */
 
 // 4. Run the 'displayResults' method at the end of each 'registerNewAnswer' method call.
 // HINT: Use many of the tools you learned about in this and the last section 😉
@@ -2154,9 +2154,28 @@ poll.displayResults = function (type = 'array') {
 // answers: [5, 2, 3],
 // answers: [1, 5, 3, 9, 6, 1],
 
-poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+/* poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string'); */
 
 // BONUS TEST DATA 1: [5, 2, 3]
 // BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 // GOOD LUCK 😀
+
+// IIFE
+/* const runOnce = function () {
+  console.log('This will run once and never again');
+};
+runOnce(); // Not true neccessarily, you CAN call it again if you want
+
+(function () {
+  console.log('Never run again');
+})();
+
+(() => console.log('Also ever run again'))();
+
+{
+  const isPrivate = 23;
+} */
+
+// C-C-C-CLOSURES!!!
+const secureBooking = function () {};
