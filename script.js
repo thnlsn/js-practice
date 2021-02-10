@@ -2340,20 +2340,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin'); */
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
-
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
-/////////////////////////////////////////////////
-
-let arr = ['a', 'b', 'c', 'd', 'e'];
+/* let arr = ['a', 'b', 'c', 'd', 'e'];
 
 // SLICE: DOES NOT MUTATE, instead returns an updated array
 console.log('.slice()');
@@ -2376,4 +2363,41 @@ let arr2 = ['j', 'i', 'h', 'g', 'f'];
 arr2.reverse();
 console.log(arr2);
 
-//
+// CONCAT: DOES NOT MUTATE, instead returns the updated array
+const letters = arr.concat(arr2); // Take arr and push the entirety of arr2 onto it
+console.log(letters);
+console.log([...arr, ...arr2]); // This accomplishes the exact same thing, including not mutating the original array
+
+// JOIN: DOES NOT MUTATE, instead returns a string with each index joined by the argument
+console.log(letters.join('~')); // OUTPUT: 'a~d~f~g~h~i~j' */
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+/////////////////////////////////////////////////
+
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i}: Deposit of $${movement}`);
+  } else {
+    console.log(`Movement ${i}: Withdrawal of $${Math.abs(movement)}`);
+  }
+}
+
+// ForEach
+console.log('\n||| ForEach method |||');
+movements.forEach(function (movement, i, arr) {
+  if (movement > 0) {
+    console.log(`Deposit: $${movement}`);
+  } else {
+    console.log(`Withdrawal: $${Math.abs(movement)}`);
+  }
+});

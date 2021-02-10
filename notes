@@ -100,10 +100,25 @@ Are arguments basically local variables? Local to the function they are passed i
 
 Shallow Copy
 
+Object Methods
+    - Object.entries(obj)
+
 Array Methods
     - slice()
     - splice()
-    
+    - concat() vs [arr..., arr2...]
+    - join()
+    - push()
+    - unshift()
+    - pop()
+    - shift()
+    - indexOf()
+    - includes()
+    - entries()
+
+Higher-Order Array Methods
+    - 
+
 
 
 
