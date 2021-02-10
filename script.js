@@ -1984,7 +1984,7 @@ const transformer = function (str, cb) {
 
 transformer('JavaScript is the best!', oneWord); */
 
-const lufthansa = {
+/* const lufthansa = {
   airline: 'Lufthansa',
   iataCode: 'LH',
   bookings: [],
@@ -2012,21 +2012,21 @@ const eurowings = {
 const book = lufthansa.book;
 
 book.call(eurowings, 613, 'James Earl');
-console.log(eurowings);
+console.log(eurowings); */
 
-const swiss = {
+/* const swiss = {
   airline: 'Swiss Air Lines',
   iataCode: 'LX',
   bookings: [],
 };
 
 book.call(swiss, 553, 'James Francis');
-console.log(swiss);
+console.log(swiss); */
 
 // call() and apply() immidiately call the function given the thing 'this' should be bound to, and the arguments to pass into the function call()/apply() was a method of.
 // bind() returns a new function where the 'this' keyword is already bound to the function it was a method of. From this point you can call the new function and 'this' will be bound correctly.
 
-const bookEW = book.bind(eurowings); // Takes in the element that you want 'this' to be bound to
+/* const bookEW = book.bind(eurowings); // Takes in the element that you want 'this' to be bound to
 const bookLH = book.bind(lufthansa); // Takes in the element that you want 'this' to be bound to
 const bookLX = book.bind(swiss); // Takes in the element that you want 'this' to be bound to
 bookEW(432, 'Henry Cavill');
@@ -2034,3 +2034,129 @@ bookEW(432, 'Henry Cavill');
 const bookEW23 = book.bind(eurowings, 23);
 bookEW23('Jimmy Garopollo');
 bookEW23('George Kittle');
+
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+}; */
+
+/* document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa)); */
+
+// Partial application
+/* const addText = (rate, value) => value + value * rate;
+console.log(addText(0.1, 200));
+
+const addVAT = addText.bind(null, 0.23);
+console.log(addText(0.23, 200));
+console.log(addVAT(300));
+
+const addTax = (rate) => {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const addTaxRate = (rate) => (value) => value * 2 * rate;
+console.log(addTaxRate(0.2)(400));
+
+const addVAT2 = addTax(0.23);
+console.log(addVAT2(300)); */
+
+// Let's build a simple poll app!
+// A poll has a question, an array of options from which people can choose, and an array with the number of replies for each option. This data is stored in the starter object below.
+// Here are your tasks:
+const poll = {
+  question: 'What is your favourite programming language?',
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+  // This generates [0, 0, 0, 0]. More in the next section 😃
+  answers: new Array(4).fill(0),
+};
+// 1. Create a method called 'registerNewAnswer' on the 'poll' object. The method does 2 things:
+// 1.1. Display a prompt window for the user to input the number of the selected option. The prompt should look like this:
+/*
+What is your favourite programming language?
+0: JavaScript
+1: Python
+2: Rust
+3: C++
+(Write option number)
+*/
+
+// 1.2. Based on the input number, update the answers array. For example, if the option is 3, increase the value AT POSITION 3 of the array by 1. Make sure to check if the input is a number and if the number makes sense (e.g answer 52 wouldn't make sense, right?)
+/* poll.registerNewAnswer = function () {
+  let prompt = '';
+  for (const option of this.options) prompt += `\n${option}`;
+  // Get answer
+  const answer = Number(
+    window.prompt.call(
+      window,
+      `${this.question}${prompt}\n(Write option number)`
+    )
+  );
+  // Register answer
+  if (typeof answer === 'number' && answer < 4) this.answers[answer] += 1;
+  this.displayResults();
+}; */
+
+/* poll.registerNewAnswer = function () {
+  // Get answer
+  const answer = Number(
+    prompt(
+      `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+    )
+  );
+  console.log(answer);
+  // Register answer
+  typeof answer === 'number' &&
+    answer < this.answers.length &&
+    this.answers[answer]++;
+  this.displayResults();
+}; */
+
+poll.registerNewAnswer = function () {
+  let choices = '';
+  for (const option of this.options) choices += `\n${option}`;
+  // Get answer
+  const answer = Number(
+    prompt(`${this.question}${choices}\n(Write option number)`)
+  );
+  // Register answer
+  if (typeof answer === 'number' && answer < this.answers.length)
+    this.answers[answer] += 1;
+  this.displayResults();
+  this.displayResults('string');
+};
+
+// 2. Call this method whenever the user clicks the "Answer poll" button.
+document
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+// 3. Create a method 'displayResults' which displays the poll results. The method takes a string as an input (called 'type'), which can be either 'string' or 'array'. If type is 'array', simply display the results array as it is, using console.log(). This should be the default option. If type is 'string', display a string like "Poll results are 13, 2, 4, 1".
+poll.displayResults = function (type = 'array') {
+  switch (type) {
+    case 'string':
+      console.log(`Poll results are ${this.answers.join(', ')}`);
+      break;
+    default:
+      console.log(this.answers);
+  }
+};
+
+// 4. Run the 'displayResults' method at the end of each 'registerNewAnswer' method call.
+// HINT: Use many of the tools you learned about in this and the last section 😉
+// BONUS: Use the 'displayResults' method to display the 2 arrays in the test data. Use both the 'array' and the 'string' option. Do NOT put the arrays in the poll object! So what shoud the this keyword look like in this situation?
+
+// answers: [5, 2, 3],
+// answers: [1, 5, 3, 9, 6, 1],
+
+poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+
+// BONUS TEST DATA 1: [5, 2, 3]
+// BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
+// GOOD LUCK 😀

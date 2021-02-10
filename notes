@@ -145,3 +145,64 @@ console.log('after changeObject: ' + x.member); /* change did not persist */
 console.log('before changeMember: ' + x.member);
 changeMember(x);
 console.log('after changeMember: ' + x.member); /* change persists */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```js
+const poll = {
+  question: 'What is your favourite programming language?',
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+  // This generates [0, 0, 0, 0]. More in the next section 😃
+  answers: new Array(4).fill(0),
+};
+
+// JONAS'S SOLUTION
+poll.registerNewAnswer = function () {
+  // Get answer
+  const answer = Number(
+    prompt(
+      `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+    )
+  );
+  console.log(answer);
+  // Register answer
+  typeof answer === 'number' &&
+    answer < this.answers.length &&
+    this.answers[answer]++;
+  this.displayResults();
+};
+
+// MY SOLUTION
+poll.registerNewAnswer = function () {
+  let prompt = '';
+  for (const option of this.options) prompt += `\n${option}`;
+  // Get answer
+  const answer = Number(
+    prompt(`${this.question}${prompt}\n(Write option number)`)
+  );
+  // Register answer
+  if (typeof answer === 'number' && answer < this.answers.length)
+    this.answers[answer] += 1;
+  this.displayResults();
+};
+
+// Call the above function on button click
+document
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+```
+
+I have a question about my solution to one of the coding challenges: I solved it, but initially I had a problem with the prompt() function. Above is my original solution (along with Jonas's), but I just wanted to ask why mine does not work while Jonas's does. When you run it with my solution, you get "Uncaught TypeError: prompt is not a function" but with Jonas's it works fine. The part that confuses me, is that the part where we both call the prompt() function, it is almost identical, we are simply calling prompt(), passing in a built string (we built it differently, but I don't see why that would matter), and in both cases it's in the same scope.
+
+So, like I said, I did end up making it work, but I want to know why it DIDN'T work initially, because it seems to be being called under the same circumstances as in Jonas's solution.
