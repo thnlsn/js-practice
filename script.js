@@ -1415,7 +1415,7 @@ console.log(new Set(staff).size);
 
 console.log(new Set('thomasnelson').size); // 9 unique letters in my name */
 
-const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+/* const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 // Enhanced object literals: Computing a property name
 const openingHours = {
@@ -1486,7 +1486,7 @@ const rest = {
       }`
     );
   },
-};
+}; */
 
 // MAP: A data structure that can be used to map values to keys
 // Similar to objects, data is stored in key/value pairs, however in maps, the KEYS can have any type
@@ -2179,28 +2179,27 @@ runOnce(); // Not true neccessarily, you CAN call it again if you want
 
 // C-C-C-CLOSURES!!!
 /* const secureBooking = function () {
-  let passengerCount = 0;
-  console.log(passengerCount);
+  let obj = { num: 0 };
+  console.log(obj);
 
   return function () {
-    passengerCount++;
-    console.log(passengerCount);
+    obj.num++;
+    console.log(obj);
   };
 };
 
 const booker = secureBooking();
 
 booker(); // output: 1
-secureBooking(); // output: 0
+secureBooking(); // output: { num: 0 }
 booker(); // output: 2
-secureBooking(); // output: 0
+secureBooking(); // output: { num: 0 }
 booker(); // output: 3
-secureBooking(); // output: 0
+secureBooking(); // output: { num: 0 }
 booker(); // output: 4
-secureBooking(); // output: 0
+secureBooking(); // output: { num: 0 } */
 
-console.dir(secureBooking);
-console.dir(booker); */
+// booker only retains the reference to passengerCount as it was when const booker was created, and it will keep that forever throughout the applications run time
 
 // Level 1
 // Global Execution Context enters the stack
@@ -2226,3 +2225,155 @@ console.dir(booker); */
 // Scan the function body, etc.
 // Scope Chain: VE + nothing..?
 // WE & Scope Chain of birth place (secureBooking): *passengerCount = 0, secureBooking, booker
+
+/* let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+g(); */
+
+/* const boardPassengers = function (n, wait) {
+  let perGroup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+
+boardPassengers(180, 2); */
+
+/*
+boardPassengers is executed and perGroup is assigned, setTimeout begins, and the console.log all happen instantly.
+2 seconds later, the anonymous callback function of setTimeout is run
+At this point, boardPassengers is OFF the stack, and the anonymous functions is the only thing on the stack
+It has a variable environment of the boardPassengers function, but that's it.
+It is able to log perGroup and the n argument, because those were in the variable environment of the function it was created in.
+*/
+
+/* 
+This is more of a thinking challenge than a coding challenge 🤓
+Take the IIFE below and at the end of the function, attach an event listener that changes the color of the selected h1 element ('header') to blue, each time the BODY element is clicked. Do NOT select the h1 element again!
+And now explain to YOURSELF (or someone around you) WHY this worked! Take all the time you need. Think about WHEN exactly the callback function is executed, and what that means for the variables involved in this example.
+GOOD LUCK 😀
+*/
+
+/* (function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+  document.body.addEventListener('click', function toBlue() {
+    header.style.color = 'blue';
+  });
+})(); */
+
+// After Global EC does stuff etc.
+// We get to the IIFE, which is immidiately invoked and the EC is put on the stack.
+// The VE of IIFE is header* object
+// addEventListener is invoked, and at that moment toBlue is created ---> CLOSURE CREATED HERE (reference to header* object)
+// IIFE pops off the stack and is gone forever, garbage collection likely sweeps up header and everything else in it's VE
+// ... ... ...
+// I click on the body, which has been waiting for a click event, at which point toBlue() is invoked
+// It checks it's variable environment for the header* object -> it is not there
+// It checks it's closure to find the header* object, with a style.color of red, as it was the moment toBlue() was created, and assigns it red.
+
+// Data
+/* const account1 = {
+  owner: 'Jonas Schmedtmann',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+};
+
+const account2 = {
+  owner: 'Jessica Davis',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
+
+const account3 = {
+  owner: 'Steven Thomas Williams',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+};
+
+const account4 = {
+  owner: 'Sarah Smith',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+};
+
+const accounts = [account1, account2, account3, account4];
+
+// Elements
+const labelWelcome = document.querySelector('.welcome');
+const labelDate = document.querySelector('.date');
+const labelBalance = document.querySelector('.balance__value');
+const labelSumIn = document.querySelector('.summary__value--in');
+const labelSumOut = document.querySelector('.summary__value--out');
+const labelSumInterest = document.querySelector('.summary__value--interest');
+const labelTimer = document.querySelector('.timer');
+
+const containerApp = document.querySelector('.app');
+const containerMovements = document.querySelector('.movements');
+
+const btnLogin = document.querySelector('.login__btn');
+const btnTransfer = document.querySelector('.form__btn--transfer');
+const btnLoan = document.querySelector('.form__btn--loan');
+const btnClose = document.querySelector('.form__btn--close');
+const btnSort = document.querySelector('.btn--sort');
+
+const inputLoginUsername = document.querySelector('.login__input--user');
+const inputLoginPin = document.querySelector('.login__input--pin');
+const inputTransferTo = document.querySelector('.form__input--to');
+const inputTransferAmount = document.querySelector('.form__input--amount');
+const inputLoanAmount = document.querySelector('.form__input--loan-amount');
+const inputCloseUsername = document.querySelector('.form__input--user');
+const inputClosePin = document.querySelector('.form__input--pin'); */
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+/////////////////////////////////////////////////
+
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+// SLICE: DOES NOT MUTATE, instead returns an updated array
+console.log('.slice()');
+console.log(arr.slice(2));
+console.log(arr.slice(2, 4)); // End parameter is NOT included in the new array
+console.log(arr.slice(-1)); // -1 is the last element of the array
+console.log(arr.slice(1, -1)); // -1 is the last element of the array
+console.log(arr.slice(-5, 5)); // -1 is the last element of the array
+console.log(arr.slice()); // -1 is the last element of the array
+
+// SPLICE: MUTATES, but also returns in an array, the elements spliced from the original array
+console.log('\n.splice()');
+console.log(arr.splice(-1)); // Start at -1 index from the end (so the last index) and remove the rest, so just the last element
+console.log(arr.splice(1, 2)); // Start at index 1, and span 2 elements (so essentially index 1 to 2), then return the removed elements.
+console.log(arr); // The original array is mutated to contain the array without the spliced elements
+
+// REVERSE: MUTATES, but also returns the updated array
+console.log('\n.splice()');
+let arr2 = ['j', 'i', 'h', 'g', 'f'];
+arr2.reverse();
+console.log(arr2);
+
+//

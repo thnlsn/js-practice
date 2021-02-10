@@ -44,7 +44,7 @@ Compare by value vs by reference
 How can strings have methods if they are primitives and not objects?
     - When you invoke any string method (.slice(), .indexOf(), etc.) or even access an index with bracket notation ('thomas'[0]), JavaScript is actually converting the string into an object (new String('string')), and it is on that object that the method is attached and being invoked from. After the execution of the method, it is converted back into a primitive string and returned, because primitives cannot be mutated.
 
-String methods:
+String Methods:
     - indexOf, lastIndexOf, firstIndexOf
     - []
     - replace
@@ -57,7 +57,7 @@ String methods:
 
 Instantiate vs Initialize
 
-Const(ant) vs read-only
+Const(ant) vs Read-Only
 
 Default function arguments (and using expressions in them)
 
@@ -89,7 +89,21 @@ Function Execution Context Variable Search Priority
 Lookup
 
 Closures
-    - Functions do not lose connection to variables available at that functions birth place (VE and Scope Chain)
+    - Functions do not lose connection to closed-over variable environments of functions they were created in.
+
+Closed-Over Variable Environment
+
+Why don't functions get called when invoked inside of another function? Even if the outer function isn't invoked, the inner still ends with ().
+    - Because in the variable environment, JavaScript does not know what is inside a function expression or declaration, only that is IS a function. The moment it is put on the stack it will run through the code and invoke it and it will execute as expected.
+
+Are arguments basically local variables? Local to the function they are passed into, and available in the scope chain for child functions?
+
+Shallow Copy
+
+Array Methods
+    - slice()
+    - splice()
+    
 
 
 
