@@ -77,7 +77,19 @@ Abstraction (levels of abstraction)
 
 Partial Application
 
+IIFE (Immediately Invoked Function Expression)
+
 Data Encapsulation & Data Privacy
+
+Function Execution Context Variable Search Priority
+    - First the function will look at it's variable environment
+    - If it is not there, it will look into it's closure, if it has one
+    - If it's not there it will perform a variable lookup, moving up in scope until it finds the variable
+
+Lookup
+
+Closures
+    - Functions do not lose connection to variables available at that functions birth place (VE and Scope Chain)
 
 
 

@@ -2178,4 +2178,51 @@ runOnce(); // Not true neccessarily, you CAN call it again if you want
 } */
 
 // C-C-C-CLOSURES!!!
-const secureBooking = function () {};
+/* const secureBooking = function () {
+  let passengerCount = 0;
+  console.log(passengerCount);
+
+  return function () {
+    passengerCount++;
+    console.log(passengerCount);
+  };
+};
+
+const booker = secureBooking();
+
+booker(); // output: 1
+secureBooking(); // output: 0
+booker(); // output: 2
+secureBooking(); // output: 0
+booker(); // output: 3
+secureBooking(); // output: 0
+booker(); // output: 4
+secureBooking(); // output: 0
+
+console.dir(secureBooking);
+console.dir(booker); */
+
+// Level 1
+// Global Execution Context enters the stack
+// Scans the document and hoists all function declarations and vars
+// VE: secureBooking = <function>
+// booker is set to secureBooking, which is called... +++
+
+// Level 2 (secureBooking)
+// secureBooking Execution Context enters the stack, pausing the Global Execution Context
+// Scan the function body and hoists all function declarations and vars
+// VE: passengerCount = 0
+// Scope Chain: VE + secureBooking
+// <function> is returned, which will be stored in the booker variable
+// secureBooking Execution Contexts pops off the stack... ---
+
+// Level 1
+// Global Execution Context resumes the execution phase that was paused
+// VE: secureBooking = <function> AND booker = <function>
+// booker() is called... +++
+
+// Level 2 (booker)
+// booker EC enters the stack
+// Scan the function body, etc.
+// Scope Chain: VE + nothing..?
+// WE & Scope Chain of birth place (secureBooking): *passengerCount = 0, secureBooking, booker
