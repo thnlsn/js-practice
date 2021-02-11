@@ -117,7 +117,8 @@ Array Methods
     - entries()
 
 Higher-Order Array Methods
-    - 
+    - ForEach()
+      - Executes a callback function for each element in the array (does not return anything).
 
 
 

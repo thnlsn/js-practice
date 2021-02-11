@@ -2384,20 +2384,20 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
-for (const [i, movement] of movements.entries()) {
+/* for (const [i, movement] of movements.entries()) {
   if (movement > 0) {
     console.log(`Movement ${i}: Deposit of $${movement}`);
   } else {
     console.log(`Movement ${i}: Withdrawal of $${Math.abs(movement)}`);
   }
-}
+} */
 
 // ForEach
-console.log('\n||| ForEach method |||');
+/* console.log('\n||| ForEach method |||');
 movements.forEach(function (movement, i, arr) {
   if (movement > 0) {
     console.log(`Deposit: $${movement}`);
   } else {
     console.log(`Withdrawal: $${Math.abs(movement)}`);
   }
-});
+}); */
