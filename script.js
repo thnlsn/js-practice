@@ -2381,11 +2381,17 @@ const currencies = new Map([
 ]);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const currenciesUnique = new Set(['USD', 'GBP', 'EUR', 'PND', 'PSP', 'USD']);
 
 /////////////////////////////////////////////////
 
-currencies.forEach((value, key, map) => {
+/* currencies.forEach((value, key, map) => {
   console.log(`${key}: ${value}`);
+}); */
+
+console.log(currenciesUnique);
+currenciesUnique.forEach((currency, _, map) => {
+  console.log(`${key}: ${currency}`);
 });
 
 /* for (const [i, movement] of movements.entries()) {

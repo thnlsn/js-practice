@@ -100,6 +100,8 @@ Are arguments basically local variables? Local to the function they are passed i
 
 Shallow Copy
 
+Throwaway Variable
+
 Object Methods
     - Object.entries(obj)
 
@@ -119,6 +121,8 @@ Array Methods
 Higher-Order Array Methods
     - ForEach()
       - Executes a callback function for each element in the array (does not return anything).
+      - Works on maps and sets
+      - In sets, the second parameter also references value, so it is a throwaway variable in place to provide consistency across forEach calls on different data structures
 
 
 
