@@ -2374,14 +2374,14 @@ console.log(letters.join('~')); // OUTPUT: 'a~d~f~g~h~i~j' */
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 
-const currencies = new Map([
+/* const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
   ['GBP', 'Pound sterling'],
 ]);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const currenciesUnique = new Set(['USD', 'GBP', 'EUR', 'PND', 'PSP', 'USD']);
+const currenciesUnique = new Set(['USD', 'GBP', 'EUR', 'PND', 'PSP', 'USD']); */
 
 /////////////////////////////////////////////////
 
@@ -2389,10 +2389,10 @@ const currenciesUnique = new Set(['USD', 'GBP', 'EUR', 'PND', 'PSP', 'USD']);
   console.log(`${key}: ${value}`);
 }); */
 
-console.log(currenciesUnique);
+/* console.log(currenciesUnique);
 currenciesUnique.forEach((currency, _, map) => {
   console.log(`${key}: ${currency}`);
-});
+}); */
 
 /* for (const [i, movement] of movements.entries()) {
   if (movement > 0) {
@@ -2411,3 +2411,6 @@ movements.forEach(function (movement, i, arr) {
     console.log(`Withdrawal: $${Math.abs(movement)}`);
   }
 }); */
+
+console.log([1, 2, 3, 4, 5, 6, 7]);
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
