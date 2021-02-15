@@ -2412,5 +2412,23 @@ movements.forEach(function (movement, i, arr) {
   }
 }); */
 
-console.log([1, 2, 3, 4, 5, 6, 7]);
-console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+/* console.log([1, 2, 3, 4, 5, 6, 7]);
+console.log(new Array(1, 2, 3, 4, 5, 6, 7)); */
+
+/* const newArr = new Array(5).fill(1, 2, 4);
+console.log(newArr); */
+
+// Array constructor (not function)
+/* const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z); */
+
+/* const randDice = Array.from(
+  { length: 100 },
+  () => Math.trunc(Math.random() * 6) + 1
+);
+console.log(randDice); */
+
+const movementsUI = Array.from(document.querySelectorAll('.movements__value'));
