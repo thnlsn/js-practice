@@ -137,6 +137,12 @@ Ways to programmatically generate an array
 
 Methods on Array function vs Array constructor
 
+num++ vs num + 1 vs ++num
+    - num++ and num + 1 both do increment the variable, however, the return of num++ is the previous value, while + 1 is an expression resulting in the new value, so trying to log num++ will return num before the incrementation.
+    - ++num is the solution to the num++ problem, instead of returning num before the incrementation, the incrementation happens first THEN returns the new value.
+
+Function Body
+
 
 
 

@@ -2431,4 +2431,104 @@ console.log(z); */
 );
 console.log(randDice); */
 
-const movementsUI = Array.from(document.querySelectorAll('.movements__value'));
+// const movementsUI = Array.from(document.querySelectorAll('.movements__value'));
+
+const account1 = {
+  owner: 'Thomas Nelson',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+};
+
+const account2 = {
+  owner: 'Emily Davis',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
+
+const account3 = {
+  owner: 'Grant Adelson Clark',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+};
+
+const account4 = {
+  owner: 'Sophia Madison',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+};
+
+const accounts = [account1, account2, account3, account4];
+
+////// Array exercise #1
+const bankDepositSum = accounts
+  .flatMap((acct) => acct.movements)
+  .filter((mov) => mov > 0)
+  .reduce((acc, deposit) => acc + deposit);
+console.log(bankDepositSum);
+
+// Just with reduce
+const bankDepositSumReduce = accounts.reduce((accumulator, { movements }) => {
+  movements.forEach((mov) => (mov > 0 ? (accumulator += mov) : accumulator));
+  return accumulator;
+}, 0);
+console.log(bankDepositSum);
+
+////// Array exercise #2
+const numDeposits1000 = accounts
+  .flatMap((acct) => acct.movements)
+  .filter((mov) => mov > 0)
+  .reduce((count, deposit) => (deposit >= 1000 ? ++count : count), 0);
+/* const numDeposits1000 = accounts
+  .flatMap((acct) => acct.movements)
+  .filter((mov) => mov >= 1000).length; */
+console.log(numDeposits1000);
+
+// Array exercise #3
+const { deposits, withdrawals } = accounts
+  .flatMap((acct) => acct.movements)
+  .reduce(
+    (acc, mov) => {
+      acc[mov > 0 ? 'deposits' : 'withdrawals'] += mov;
+      return acc;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
+console.log(deposits, withdrawals);
+
+// Array exercise #4
+const titleCase = function (title) {
+  const exceptions = [
+    'a',
+    'is',
+    'the',
+    'and',
+    'as',
+    'for',
+    'but',
+    'if',
+    'nor',
+    'not',
+    'so',
+    'yet',
+    'an',
+    'of',
+    'it',
+    'on',
+    'in',
+    'with',
+  ];
+  return title
+    .toLowerCase()
+    .split(' ')
+    .map((word, i) =>
+      i === 0 || !exceptions.includes(word)
+        ? word[0].toUpperCase() + word.slice(1)
+        : word
+    )
+    .join(' ');
+};
+console.log(titleCase('tHE LAST of THE mOhiCAnS'));
