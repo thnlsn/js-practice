@@ -2530,7 +2530,7 @@ console.log(deposits, withdrawals); */
 };
 console.log(titleCase('tHE LAST of THE mOhiCAnS')); */
 
-const dogs = [
+/* const dogs = [
   { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
   { weight: 8, curFood: 200, owners: ['Matilda'] },
   { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
@@ -2550,6 +2550,11 @@ console.log(dogs);
 // 2. Find Sarah's dog and log to the console whether it's eating too much or too little.
 const sarahDog = dogs.find((dog) => dog.owners.includes('Sarah'));
 console.log(sarahDog);
+console.log(
+  `Sarah's dog is eating too ${
+    sarahDog.curFood > sarahDog.recommendedFood ? 'much' : 'little'
+  } food!`
+);
 
 // 3. Create an array containing all owners of dogs who eat too much ('ownersEatTooMuch') and an array with all owners of dogs who eat too little ('ownersEatTooLittle').
 const [ownersEatTooMuch, ownersEatTooLittle] = dogs.reduce(
@@ -2590,4 +2595,4 @@ console.log(eatingOkay);
 const sorted = dogs
   .slice()
   .sort(({ recommendedFood: a }, { recommendedFood: b }) => a - b);
-console.log(sorted);
+console.log(sorted); */
