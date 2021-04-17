@@ -167,6 +167,48 @@ Function Body
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Function to replace a character in a string at a particular index with a different character
 const replaceAt = function (str, index, replacement) {
   const end = str.slice(index);
@@ -208,6 +250,12 @@ const titleCase = function (title) {
 };
 console.log(titleCase('tHE LAST of THE mOhiCAnS'));
 
+// Function to generate a random integer from a passed in min and max
+const randomInt = (min, max) =>
+  Math.trunc(Math.random() * (max - min + 1) + min);
+
+// Function to check if number is even
+const isEven = (num) => !(num % 2);
 
 
 
